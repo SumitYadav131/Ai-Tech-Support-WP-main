@@ -238,8 +238,21 @@ jQuery(document).ready(function ($) {
 
                         sidebar.append(
                             '<div class="support-session-item" data-id="' + session.id + '">' +
-                            (session.first_message ? session.first_message : 'Chat ' + session.id) + (session.created_at ? ' (' + session.created_at + ')' : '') +
-                            '</div>'
+                            '<div class="session-avatar">' +
+                            '<img src="https://i.pravatar.cc/40?u=' + session.id + '">' +
+                            '</div>' +
+
+                            '<div class="session-content">' +
+                            '<div class="session-title">' +
+                            (session.first_message ? session.first_message : 'Chat ' + session.id) +
+
+                            '<div class="session-support-type">' + (session.support_type ? session.support_type : 'General') + '</div>' +
+                            '</div>' +
+
+                            '<div class="session-time">' +
+                            (session.created_at ? session.created_at : '') +
+                            '</div>' +
+                            '</div>' + '</div>'
                         );
 
                     });
