@@ -25,7 +25,7 @@ function ai_support_render_widget()
         </div>
 
         <div id="ai-chat-body">
-            
+
             <div id="ai-chat-sidebar">
 
             </div>
@@ -149,6 +149,17 @@ function get_stored_sessions()
 {
     global $wpdb;
     $table = $wpdb->prefix . 'ai_support_sessions';
-    $sessions = $wpdb->get_results("SELECT * from $table order by created_at desc");
+    $join_table = $wpdb->prefix . 'ai_support_messages';
+    // $sessions = $wpdb->get_results("SELECT $table.* , $join_table.message from $table INNER JOIN $join_table ON $join_table.session_id = $table.id  order by $table.created_at desc ");
+    $sessions = $wpdb->get_results("SELECT s.*,
+       (
+           SELECT m.message
+           FROM $join_table m
+           WHERE m.session_id = s.id
+           ORDER BY m.created_at ASC
+           LIMIT 1
+       ) AS first_message
+FROM $table s
+ORDER BY s.created_at DESC; ");
     wp_send_json_success($sessions);
 }
