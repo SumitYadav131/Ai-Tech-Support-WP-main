@@ -105,6 +105,8 @@ button.ai-option.active {
   padding: 10px 14px;
   border-radius: 14px;
   line-height: 1.4;
+  font-family: "Manrope";
+  font-size: 14px;
 }
 
 .ai-user {
