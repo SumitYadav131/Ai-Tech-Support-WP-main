@@ -186,6 +186,7 @@ button.ai-option.active {
 /* Sidebar srtyling*/
 
 .support-session-item {
+  font-family: "Manrope";
   padding: 12px 14px;
   margin-bottom: 8px;
   background: #f5f7fa;
