@@ -238,7 +238,7 @@ jQuery(document).ready(function ($) {
 
                         sidebar.append(
                             '<div class="support-session-item" data-id="' + session.id + '">' +
-                            (session.support_type ? session.support_type : 'Chat ' + session.id) + (session.created_at ? ' (' + session.created_at + ')' : '') +
+                            (session.first_message ? session.first_message : 'Chat ' + session.id) + (session.created_at ? ' (' + session.created_at + ')' : '') +
                             '</div>'
                         );
 
