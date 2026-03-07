@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
 
     // made temporary change 
     // const $messages = $('#ai-chat-messages');
-     const $messages = $('#ai-chat-messagess');
+    const $messages = $('#ai-chat-messagess');
     const $textarea = $('#ai-question');
 
     let currentSessionId = null;
@@ -272,9 +272,7 @@ jQuery(document).ready(function ($) {
 
     // Click session to open messages
     jQuery(document).on('click', '.support-session-item', function () {
-
         var sessionId = jQuery(this).data('id');
-
         jQuery.ajax({
             url: ai_support_obj.ajax_url,
             type: 'POST',
@@ -290,7 +288,6 @@ jQuery(document).ready(function ($) {
                     var sidebar = jQuery('#ai-chat-sidebar');
                     $messages.html('');
                     sidebar.css('display', 'none');
-
                     messages.forEach(function (msg) {
                         $messages.append(
                             '<div class="ai-' + msg.role + '">' +
@@ -308,6 +305,11 @@ jQuery(document).ready(function ($) {
             }
         });
 
+    });
+
+    jQuery(document).on('click', '#ai-toogle-btn', function (e) {
+        jQuery('#ai-chat-sidebar').toggle();
+        alert('clicked');
     });
 
 

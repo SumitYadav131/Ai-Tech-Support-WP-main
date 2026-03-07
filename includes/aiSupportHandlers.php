@@ -31,7 +31,7 @@ function ai_support_render_widget()
         <ul class="nav nav-tabs" id="aiChatTabs">
 
             <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages" type="button">
+                <button id="ai-toogle-btn" class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages" type="button">
                     Messages
                 </button>
             </li>
@@ -79,10 +79,6 @@ function ai_support_render_widget()
 
     <?php
 }
-
-
-
-
 
 
 /*
