@@ -229,5 +229,9 @@ button.ai-option.active {
 
 /* default hide input area */
 div#ai-input-area {
-    display: none;
+  display: none;
+}
+/* Default hide chat messages */
+div#ai-chat-messages {
+  display: none;
 }
