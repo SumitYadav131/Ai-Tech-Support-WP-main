@@ -230,4 +230,10 @@ button.ai-option.active {
   overflow: auto !important ;
 }
 
+div#ai-chat-messagess {
+  padding: 15px;
+}
 
+div#ai-chat-sidebar {
+  padding: 15px;
+}
