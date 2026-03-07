@@ -226,3 +226,8 @@ button.ai-option.active {
   padding: 15px 10px;
   overflow: auto;
 }
+
+/* default hide input area */
+div#ai-input-area {
+    display: none;
+}

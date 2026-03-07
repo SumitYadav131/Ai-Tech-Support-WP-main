@@ -246,11 +246,7 @@ jQuery(document).ready(function ($) {
                             '<div class="session-title">' +
                             (session.first_message ? session.first_message : 'Chat ' + session.id) +
 
-                            '<div class="session-support-type">' + (session.support_type ? session.support_type : 'General') + '</div>' +
-                            '</div>' +
-
-                            '<div class="session-time">' +
-                            (session.created_at ? session.created_at : '') +
+                            '<div class="session-support-type">' + '(' + (session.support_type ? session.support_type : 'General') + ')' + '</div>' +
                             '</div>' +
                             '</div>' + '</div>'
                         );
