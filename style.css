@@ -226,13 +226,8 @@ button.ai-option.active {
   overflow: auto;
 }
 
-/* default hide input area */
-/* div#ai-input-area {
-  display: none;
-} */
-/* Default hide chat messages */
-/* div#ai-chat-messages {
-  display: none;
-} */
+.tab-content {
+  overflow: auto !important ;
+}
 
 

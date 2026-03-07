@@ -131,7 +131,21 @@ function ai_support_enqueue_assets()
             'nonce' => wp_create_nonce('ai_support_nonce')
         )
     );
+
+    wp_enqueue_style(
+        'bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'
+    );
+    wp_enqueue_script(
+        'bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+        array(),
+        null,
+        true
+    );
 }
+
+
 
 
 

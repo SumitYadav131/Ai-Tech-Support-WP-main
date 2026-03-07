@@ -10,6 +10,8 @@ include_once __DIR__ . '/../sessionWorkspace/sessionFunctions.php';
 
 add_action('wp_footer', 'ai_support_render_widget');
 
+
+
 function ai_support_render_widget()
 {
 
@@ -20,34 +22,67 @@ function ai_support_render_widget()
     <div id="ai-chat-toggle">💬</div>
 
     <div id="ai-chat-container">
+
         <div id="ai-chat-header">
             🤖 AI Support
         </div>
 
-        <div id="ai-chat-body">
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="aiChatTabs">
 
-            <div id="ai-chat-sidebar">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages" type="button">
+                    Messages
+                </button>
+            </li>
 
-            </div>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-new" type="button">
+                    New Message
+                </button>
+            </li>
 
-            <div id="ai-chat-messages">
-                <div id="ai-support-options">
-                    <button class="ai-option" data-type="technical">🔧 Technical Support</button>
-                    <button class="ai-option" data-type="broken">💥 Broken Site</button>
-                    <button class="ai-option" data-type="speed">🚀 Speed & Performance</button>
-                    <button class="ai-option" data-type="security">🔐 Security</button>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+
+            <div class="tab-pane fade show active" id="tab-messages">
+                <div>
+                    <div id="ai-chat-sidebar">
+                    </div>
+                    <div id="ai-chat-messages"></div>
                 </div>
             </div>
+
+            <div class="tab-pane fade" id="tab-new">
+                <div>
+                    <!-- made temporary change  -->
+                    <div id="ai-chat-messagess">
+                        <div id="ai-support-options">
+                            <button class="ai-option" data-type="technical">🔧 Technical Support</button>
+                            <button class="ai-option" data-type="broken">💥 Broken Site</button>
+                            <button class="ai-option" data-type="speed">🚀 Speed & Performance</button>
+                            <button class="ai-option" data-type="security">🔐 Security</button>
+                        </div>
+                    </div>
+                    <div id="ai-input-area">
+                        <textarea id="ai-question" rows="1" placeholder="Ask your issue..."></textarea>
+                        <button id="ai-ask">➤</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-
-        <div id="ai-input-area">
-            <textarea id="ai-question" rows="1" placeholder="Ask your issue..."></textarea>
-            <button id="ai-ask">➤</button>
-        </div>
     </div>
+
     <?php
 }
+
+
+
+
 
 
 /*

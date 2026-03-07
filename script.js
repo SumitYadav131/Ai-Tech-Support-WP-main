@@ -3,7 +3,11 @@ jQuery(document).ready(function ($) {
     const $toggle = $('#ai-chat-toggle');
     const $container = $('#ai-chat-container');
     const $askBtn = $('#ai-ask');
-    const $messages = $('#ai-chat-messages');
+    // const $messages = $('#ai-chat-messages');
+
+    // made temporary change 
+    // const $messages = $('#ai-chat-messages');
+     const $messages = $('#ai-chat-messagess');
     const $textarea = $('#ai-question');
 
     let currentSessionId = null;
@@ -283,7 +287,9 @@ jQuery(document).ready(function ($) {
                 if (res.success) {
                     var messages = res.data;
                     var $messages = jQuery('#ai-chat-messages');
+                    var sidebar = jQuery('#ai-chat-sidebar');
                     $messages.html('');
+                    sidebar.css('display', 'none');
 
                     messages.forEach(function (msg) {
                         $messages.append(
@@ -305,7 +311,7 @@ jQuery(document).ready(function ($) {
     });
 
 
- 
-
 });
+
+
 
