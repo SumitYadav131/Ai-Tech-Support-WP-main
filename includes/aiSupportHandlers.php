@@ -184,7 +184,6 @@ function get_stored_sessions()
     global $wpdb;
     $table = $wpdb->prefix . 'ai_support_sessions';
     $join_table = $wpdb->prefix . 'ai_support_messages';
-    // $sessions = $wpdb->get_results("SELECT $table.* , $join_table.message from $table INNER JOIN $join_table ON $join_table.session_id = $table.id  order by $table.created_at desc ");
     $sessions = $wpdb->get_results("SELECT s.*,
        (
            SELECT m.message
