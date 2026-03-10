@@ -30,7 +30,7 @@ function ai_support_render_widget()
             <li class="nav-item">
                 <button id="ai-toogle-btn" class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages"
                     type="button">
-                    Messages
+                    <span class="back-btn-arrow">🠔</span> Messages
                 </button>
             </li>
 

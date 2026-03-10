@@ -51,8 +51,6 @@ function create_session_store_table()
     dbDelta($messages_table);
 }
 
-
-
 /*
 |--------------------------------------------------------------------------
 | AI Integration Layer
@@ -112,7 +110,6 @@ function ai_support_generate_response($question)
     return $result['choices'][0]['message']['content'] ?? 'No response.';
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | Enqueue Assets
@@ -120,7 +117,6 @@ function ai_support_generate_response($question)
 */
 
 add_action('wp_enqueue_scripts', 'ai_support_enqueue_assets');
-
 function ai_support_enqueue_assets()
 {
     wp_enqueue_style('ai-support-style', plugin_dir_url(__FILE__) . 'style.css');
@@ -146,9 +142,3 @@ function ai_support_enqueue_assets()
         true
     );
 }
-
-
-
-
-
-
