@@ -33,7 +33,9 @@ function create_session_store_table()
         user_ip VARCHAR(255),
         support_type VARCHAR(200),
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY (id)
+        PRIMARY KEY (id),
+        user_id VARCHAR(20)
+
     ) $charset;";
 
     $messages_table = "CREATE TABLE $messages (

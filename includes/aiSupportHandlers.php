@@ -31,7 +31,8 @@ function ai_support_render_widget()
         <ul class="nav nav-tabs" id="aiChatTabs">
 
             <li class="nav-item">
-                <button id="ai-toogle-btn" class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages" type="button">
+                <button id="ai-toogle-btn" class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-messages"
+                    type="button">
                     Messages
                 </button>
             </li>
@@ -179,6 +180,7 @@ add_action('wp_ajax_get_sessions', 'get_stored_sessions');
 add_action('wp_ajax_nopriv_get_sessions', 'get_stored_sessions');
 function get_stored_sessions()
 {
+    $current_user = get_current_user_id();
     global $wpdb;
     $table = $wpdb->prefix . 'ai_support_sessions';
     $join_table = $wpdb->prefix . 'ai_support_messages';
@@ -191,7 +193,7 @@ function get_stored_sessions()
            ORDER BY m.created_at ASC
            LIMIT 1
        ) AS first_message
-FROM $table s
+FROM $table s where user_id = $current_user
 ORDER BY s.created_at DESC; ");
     wp_send_json_success($sessions);
 }

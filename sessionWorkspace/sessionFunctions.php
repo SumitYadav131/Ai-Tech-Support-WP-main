@@ -8,7 +8,8 @@ function ai_support_create_sessions($support_type)
         array(
             'user_ip' => $_SERVER['REMOTE_ADDR'],
             'support_type' => $support_type,
-            'created_at' => current_time('mysql')
+            'created_at' => current_time('mysql'),
+            'user_id' => get_current_user_id()
         )
     );
 
