@@ -313,7 +313,6 @@ jQuery(document).ready(function ($) {
         await jQuery('#ai-chat-sidebar').toggle();
         jQuery('#ai-chat-messages').hide();
         jQuery('.back-btn-arrow').hide();
-
     });
 
     jQuery(document).on('click', '.support-session-item', async function (e) {

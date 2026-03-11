@@ -11,6 +11,7 @@ if (!defined('ABSPATH')) {
 }
 
 include_once plugin_dir_path(__FILE__) . 'includes/aiSupportHandlers.php';
+include_once plugin_dir_path(__FILE__) . 'admin/admin-main.php';
 
 /*
 |--------------------------------------------------------------------------
