@@ -166,7 +166,6 @@ function get_session_messages()
     wp_send_json_success($messages);
 }
 
-
 /*
 |--------------------------------------------------------------------------
 | Get Stored Sessions
