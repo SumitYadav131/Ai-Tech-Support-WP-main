@@ -68,7 +68,8 @@ function ai_support_generate_response($question)
         . "\n\nUser Question:\n" . $question;
 
 
-    include_once plugin_dir_path(__FILE__) . 'config.php';
+    // include_once plugin_dir_path(__FILE__) . 'config.php';
+    $api_key = get_option('ai_support_api_key');
 
     $body = [
         // "model" => "mistralai/mistral-7b-instruct",
@@ -135,6 +136,50 @@ function ai_support_enqueue_assets()
         'bootstrap-css',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'
     );
+    wp_enqueue_script(
+        'bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+        array(),
+        null,
+        true
+    );
+
+    wp_enqueue_script(
+        'ai-support-admin-js',
+        plugin_dir_url(__FILE__) . '/admin/admin.js',
+        array('jquery'),
+        null,
+        true
+    );
+}
+
+add_action('admin_enqueue_scripts', 'ai_support_admin_scripts');
+
+function ai_support_admin_scripts()
+{
+    wp_enqueue_script(
+        'ai-support-admin-js',
+        plugin_dir_url(__FILE__) . '/admin/admin.js',
+        array('jquery'),
+        null,
+        true
+    );
+}
+
+add_action('admin_enqueue_scripts', 'ai_support_admin_assets');
+
+function ai_support_admin_assets($hook)
+{
+    // load only on your plugin page
+    if ($hook !== 'toplevel_page_ai-support-dashboard') {
+        return;
+    }
+
+    wp_enqueue_style(
+        'bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'
+    );
+
     wp_enqueue_script(
         'bootstrap-js',
         'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',

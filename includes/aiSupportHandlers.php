@@ -11,7 +11,6 @@ include_once __DIR__ . '/../sessionWorkspace/sessionFunctions.php';
 add_action('wp_footer', 'ai_support_render_widget');
 function ai_support_render_widget()
 {
-
     if (is_admin())
         return;
     ?>
