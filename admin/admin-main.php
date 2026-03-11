@@ -30,11 +30,8 @@ function ai_support_dashboard_page()
 
     // Save Support Options ONLY on support-options tab
     if ($active_tab === 'support-options') {
-
         if (isset($_POST['support_type'])) {
-
             $options = [];
-
             foreach ($_POST['support_type'] as $index => $type) {
 
                 $type = sanitize_text_field($type);
@@ -51,23 +48,16 @@ function ai_support_dashboard_page()
                     'label' => $label
                 ];
             }
-
             update_option('ai_support_options', $options);
 
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
             // If all rows removed
             delete_option('ai_support_options');
         }
-
     }
-
-
     $api_key = get_option('ai_support_api_key');
     $options = get_option('ai_support_options', []);
-
     ?>
-
     <div class="wrap">
 
         <h1 class="wp-heading-inline">AI Support Dashboard</h1>
@@ -178,10 +168,7 @@ function ai_support_dashboard_page()
         </div>
 
     </div>
-
     <?php
-
-    print_r(get_option('ai_support_options'));
 
     echo ob_get_clean();
 }

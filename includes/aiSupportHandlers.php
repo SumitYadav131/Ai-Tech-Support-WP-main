@@ -57,10 +57,18 @@ function ai_support_render_widget()
                     <!-- made temporary change  -->
                     <div id="ai-chat-messagess">
                         <div id="ai-support-options">
-                            <button class="ai-option" data-type="technical">🔧 Technical Support</button>
+                            <?php
+                            $ai_support_options = get_option('ai_support_options', []);
+                            foreach ($ai_support_options as $opt) { ?>
+                                <button class="ai-option"
+                                    data-type="<?php echo $opt['type'] ?>"><?php echo $opt['label'] ?></button>
+                                <?php
+                            }
+                            ?>
+                            <!-- <button class="ai-option" data-type="technical">🔧 Technical Support</button>
                             <button class="ai-option" data-type="broken">💥 Broken Site</button>
                             <button class="ai-option" data-type="speed">🚀 Speed & Performance</button>
-                            <button class="ai-option" data-type="security">🔐 Security</button>
+                            <button class="ai-option" data-type="security">🔐 Security</button> -->
                         </div>
                     </div>
                     <div id="ai-input-area">
