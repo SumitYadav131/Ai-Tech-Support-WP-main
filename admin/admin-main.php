@@ -28,36 +28,6 @@ function ai_support_dashboard_page()
     }
 
 
-    // Save Support Options
-    // if (isset($_POST['support_type'])) {
-
-    //     $options = [];
-
-    //     foreach ($_POST['support_type'] as $index => $type) {
-
-    //         $type = sanitize_text_field($type);
-    //         $label = isset($_POST['support_label'][$index])
-    //             ? sanitize_text_field($_POST['support_label'][$index])
-    //             : '';
-
-    //         if ($type === '' && $label === '') {
-    //             continue;
-    //         }
-
-    //         $options[] = [
-    //             'type' => $type,
-    //             'label' => $label
-    //         ];
-    //     }
-    //     die("inside");
-    //     update_option('ai_support_options', $options);
-
-    // } else if (isset($_POST['_wp_http_referer'])) {
-
-    //     // If form submitted but no rows exist
-    //     delete_option('ai_support_options');
-    // }
-
     // Save Support Options ONLY on support-options tab
     if ($active_tab === 'support-options') {
 
@@ -210,6 +180,8 @@ function ai_support_dashboard_page()
     </div>
 
     <?php
+
+    print_r(get_option('ai_support_options'));
 
     echo ob_get_clean();
 }
