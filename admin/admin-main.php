@@ -37,14 +37,18 @@ function ai_support_dashboard_page()
                 $label = isset($_POST['support_label'][$index])
                     ? sanitize_text_field($_POST['support_label'][$index])
                     : '';
+                $default_msg = isset($_POST['support_default_msg'][$index])
+                    ? sanitize_text_field($_POST['support_default_msg'][$index])
+                    : '';
 
-                if ($type === '' && $label === '') {
+                if ($type === '' && $label === '' && $default_msg === '') {
                     continue;
                 }
 
                 $options[] = [
                     'type' => $type,
-                    'label' => $label
+                    'label' => $label,
+                    'default_msg' => $default_msg
                 ];
             }
             update_option('ai_support_options', $options);
@@ -54,6 +58,8 @@ function ai_support_dashboard_page()
             delete_option('ai_support_options');
         }
     }
+
+
     $api_key = get_option('ai_support_api_key');
     $options = get_option('ai_support_options', []);
     ?>
@@ -73,17 +79,11 @@ function ai_support_dashboard_page()
                 Support Options
             </a>
 
-            <a href="?page=ai-support-dashboard&tab=default-messages"
-                class="nav-tab <?php echo ($active_tab == 'default-messages') ? 'nav-tab-active' : ''; ?>">
-                Default Messages
-            </a>
-
         </nav>
 
         <div style="margin-top:20px;">
 
             <?php if ($active_tab == 'configuration'): ?>
-
                 <form method="post">
 
                     <table class="form-table">
@@ -106,7 +106,6 @@ function ai_support_dashboard_page()
                     <?php submit_button('Save Settings'); ?>
 
                 </form>
-
             <?php endif; ?>
 
 
@@ -117,6 +116,7 @@ function ai_support_dashboard_page()
                             <tr>
                                 <th>Type</th>
                                 <th>Label</th>
+                                <th>Default Messages</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -134,6 +134,11 @@ function ai_support_dashboard_page()
                                         <td>
                                             <input type="text" name="support_label[]" value="<?php echo esc_attr($opt['label']); ?>"
                                                 class="regular-text">
+                                        </td>
+
+                                        <td>
+                                            <input type="text" name="support_default_msg[]"
+                                                value="<?php echo esc_attr($opt['default_msg'] ?? ''); ?>" class="regular-text">
                                         </td>
 
                                         <td>
@@ -158,10 +163,11 @@ function ai_support_dashboard_page()
                     <?php submit_button('Save Options'); ?>
 
                 </form>
-
             <?php endif; ?>
 
-       
+
+
+
 
         </div>
 
