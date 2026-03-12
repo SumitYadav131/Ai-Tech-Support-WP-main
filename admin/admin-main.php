@@ -27,7 +27,6 @@ function ai_support_dashboard_page()
         );
     }
 
-
     // Save Support Options ONLY on support-options tab
     if ($active_tab === 'support-options') {
         if (isset($_POST['support_type'])) {
@@ -74,6 +73,11 @@ function ai_support_dashboard_page()
                 Support Options
             </a>
 
+            <a href="?page=ai-support-dashboard&tab=default-messages"
+                class="nav-tab <?php echo ($active_tab == 'default-messages') ? 'nav-tab-active' : ''; ?>">
+                Default Messages
+            </a>
+
         </nav>
 
         <div style="margin-top:20px;">
@@ -107,11 +111,8 @@ function ai_support_dashboard_page()
 
 
             <?php if ($active_tab == 'support-options'): ?>
-
                 <form method="post">
-
                     <table class="widefat" id="support-options-table">
-
                         <thead>
                             <tr>
                                 <th>Type</th>
@@ -119,9 +120,7 @@ function ai_support_dashboard_page()
                                 <th>Action</th>
                             </tr>
                         </thead>
-
                         <tbody>
-
                             <?php if (!empty($options)): ?>
 
                                 <?php foreach ($options as $opt): ?>
@@ -150,11 +149,8 @@ function ai_support_dashboard_page()
                             <?php endif; ?>
 
                         </tbody>
-
                     </table>
-
                     <br>
-
                     <button type="button" class="button button-primary" id="add-support-option">
                         Add Option
                     </button>
@@ -164,6 +160,8 @@ function ai_support_dashboard_page()
                 </form>
 
             <?php endif; ?>
+
+       
 
         </div>
 
