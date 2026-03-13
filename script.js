@@ -128,6 +128,7 @@ jQuery(document).ready(function ($) {
     $('.ai-option').on('click', function () {
 
         $selectedSupport = $(this).data('type');
+        let defaultQuestion = $(this).data('message');
 
         $('.ai-option').removeClass('active');
 
@@ -135,27 +136,6 @@ jQuery(document).ready(function ($) {
 
         if ($(this).hasClass('active')) {
             $('#ai-support-options').hide();
-        }
-
-        let defaultQuestion = '';
-
-        switch ($selectedSupport) {
-
-            case 'technical':
-                defaultQuestion = 'How do I fix a broken WordPress site?';
-                break;
-
-            case 'broken':
-                defaultQuestion = 'My site is broken. What should I do?';
-                break;
-
-            case 'speed':
-                defaultQuestion = 'How can I improve my WordPress site speed?';
-                break;
-
-            case 'security':
-                defaultQuestion = 'How do I secure my WordPress site?';
-                break;
         }
 
 
