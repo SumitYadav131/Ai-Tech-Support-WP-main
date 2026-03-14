@@ -42,17 +42,31 @@ jQuery(document).ready(function ($) {
                 question: question,
                 session_id: currentSessionId
             },
-            
+            beforeSend: function () {
+
+                // Remove any old loader (safety)
+                $('.ai-typing').remove();
+
+                // Show typing indicator
+                $messages.append(
+                    '<div class="ai-bot ai-typing"><strong>AI:</strong> Typing...</div>'
+                );
+
+                $messages.scrollTop($messages[0].scrollHeight);
+            },
+
             success: function (data) {
 
                 if (data.success) {
                     currentSessionId = data.data.session_id;
+                    $('.ai-typing').remove();
                     $messages.append(
                         '<div class="ai-bot"><strong>AI:</strong> ' +
                         formatAIResponse(data.data.response) +
                         '</div>'
                     );
                 } else {
+                    $('.ai-typing').remove();
                     $messages.append(
                         '<div class="ai-bot"><strong>Error:</strong> ' +
                         formatAIResponse(data.data.response) +
@@ -126,7 +140,10 @@ jQuery(document).ready(function ($) {
         return text;
     }
 
+    $('#ai-input-area').hide();
+
     $('.ai-option').on('click', function () {
+
 
         $selectedSupport = $(this).data('type');
         let defaultQuestion = $(this).data('message');
@@ -134,6 +151,8 @@ jQuery(document).ready(function ($) {
         $('.ai-option').removeClass('active');
 
         $(this).addClass('active');
+
+        $('#ai-input-area').show();
 
         if ($(this).hasClass('active')) {
             $('#ai-support-options').hide();
