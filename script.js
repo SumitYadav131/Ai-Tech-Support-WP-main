@@ -308,6 +308,7 @@ jQuery(document).ready(function ($) {
         });
 
     });
+    jQuery('#ai-chat-messages').hide();
     jQuery('.back-btn-arrow').hide();
     jQuery(document).on('click', '#ai-toogle-btn', async function (e) {
         await jQuery('#ai-chat-sidebar').toggle();

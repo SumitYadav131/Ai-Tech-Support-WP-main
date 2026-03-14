@@ -43,12 +43,17 @@ function ai_support_render_widget()
 
         <!-- Tab Content -->
         <div class="tab-content">
-
+            <!-- Messages Tab -->
             <div class="tab-pane fade show active" id="tab-messages">
                 <div>
                     <div id="ai-chat-sidebar">
                     </div>
                     <div id="ai-chat-messages"></div>
+                </div>
+                <div id="ai-ask-btn">
+                    <button class="ask-ai-btn">
+                        Send Us Message
+                    </button>
                 </div>
             </div>
 

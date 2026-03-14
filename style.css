@@ -237,3 +237,19 @@ div#ai-chat-messagess {
 div#ai-chat-sidebar {
   padding: 15px;
 }
+
+.ask-ai-btn {
+  position: absolute;
+  bottom: 30px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  padding: 10px 20px;
+  color: white;
+  border: 0;
+  border-radius: 50px;
+}
+
+div#ai-ask-btn {
+  display: flex;
+  justify-content: center;
+}

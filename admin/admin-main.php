@@ -120,6 +120,19 @@ function ai_support_dashboard_page()
                             </td>
                         </tr>
 
+                        <tr>
+                            <th scope="row">
+                                <label for="ai_models">AI Models</label>
+                            </th>
+
+                            <td>
+                                <select name="ai_models" id="ai_models">
+                                    <option selected value="openrouter/free">Openrouter</option>
+                                    <option  value="opennApi">OpenApi</option>
+                                </select>
+                            </td>
+                        </tr>
+
                     </table>
 
                     <?php submit_button('Save Settings'); ?>
