@@ -42,6 +42,7 @@ jQuery(document).ready(function ($) {
                 question: question,
                 session_id: currentSessionId
             },
+            
             success: function (data) {
 
                 if (data.success) {
