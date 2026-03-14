@@ -275,6 +275,8 @@ jQuery(document).ready(function ($) {
     // Click session to open messages
     jQuery(document).on('click', '.support-session-item', function () {
         var sessionId = jQuery(this).data('id');
+        var $messages = jQuery('#ai-chat-messages');
+        $messages.html('');
         jQuery.ajax({
             url: ai_support_obj.ajax_url,
             type: 'POST',
@@ -286,9 +288,7 @@ jQuery(document).ready(function ($) {
             success: function (res) {
                 if (res.success) {
                     var messages = res.data;
-                    var $messages = jQuery('#ai-chat-messages');
                     var sidebar = jQuery('#ai-chat-sidebar');
-                    $messages.html('');
                     sidebar.css('display', 'none');
                     messages.forEach(function (msg) {
                         $messages.append(

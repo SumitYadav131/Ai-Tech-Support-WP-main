@@ -70,10 +70,10 @@ function ai_support_generate_response($question)
 
     // include_once plugin_dir_path(__FILE__) . 'config.php';
     $api_key = get_option('ai_support_api_key');
-
+    $ai_model = get_option('ai_model');
     $body = [
         // "model" => "mistralai/mistral-7b-instruct",
-        "model" => "openrouter/free",
+        "model" => $ai_model,
         "messages" => [
             [
                 "role" => "system",

@@ -26,6 +26,13 @@ function ai_support_dashboard_page()
             sanitize_text_field($_POST['ai_support_api_key'])
         );
     }
+    // Ai model here 
+    if (isset($_POST['ai_model'])) {
+        update_option(
+            'ai_model',
+            sanitize_text_field($_POST['ai_model'])
+        );
+    }
 
     // Save Support Options ONLY on support-options tab
     if ($active_tab === 'support-options') {
@@ -61,6 +68,7 @@ function ai_support_dashboard_page()
 
 
     $api_key = get_option('ai_support_api_key');
+    $ai_model = get_option('ai_model');
     $options = get_option('ai_support_options', []);
     ?>
     <div class="wrap">
@@ -98,6 +106,17 @@ function ai_support_dashboard_page()
                                     value="<?php echo esc_attr($api_key); ?>" class="regular-text" placeholder="Enter API Key">
 
                                 <p class="description">Enter your AI API key.</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">
+                                <label for="ai_model">AI Model</label>
+                            </th>
+
+                            <td>
+                                <input type="text" id="ai_model" name="ai_model" value="<?php echo esc_attr($ai_model); ?>"
+                                    class="regular-text" placeholder="AI Model">
                             </td>
                         </tr>
 
