@@ -34,7 +34,7 @@ function ai_support_render_widget()
             </li>
 
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-new" type="button">
+                <button id="new_session_msg" class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-new" type="button">
                     New Message
                 </button>
             </li>

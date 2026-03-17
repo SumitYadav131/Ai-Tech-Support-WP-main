@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
         console.log(question);
 
         $messages.append(
-            '<div class="ai-user"><strong>You:</strong> ' + question + '</div>'
+            '<div class="ai-user ai-res"><strong>You:</strong> ' + question + '</div>'
         );
 
         $textarea.val('');
@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
                     currentSessionId = data.data.session_id;
                     $('.ai-typing').remove();
                     $messages.append(
-                        '<div class="ai-bot"><strong>AI:</strong> ' +
+                        '<div class="ai-bot ai-res"><strong>AI:</strong> ' +
                         formatAIResponse(data.data.response) +
                         '</div>'
                     );
@@ -321,6 +321,10 @@ jQuery(document).ready(function ($) {
         jQuery('#ai-chat-messages').show();
         jQuery('.back-btn-arrow').toggle();
     });
+
+    jQuery(document).on('click', '.ask-ai-btn', function (e) {
+        jQuery('#new_session_msg').click();
+    })
 
 
 });
