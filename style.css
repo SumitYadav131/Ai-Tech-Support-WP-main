@@ -322,3 +322,7 @@ div#ai-ask-btn {
   display: flex;
   justify-content: center;
 }
+
+div#ai-chat-messages {
+  color: black;
+}
