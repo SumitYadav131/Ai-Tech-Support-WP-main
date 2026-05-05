@@ -34,7 +34,7 @@ function ai_support_render_widget()
             </li>
 
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-new" type="button">
+                <button id="new_session_msg" class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-new" type="button">
                     New Message
                 </button>
             </li>
@@ -43,12 +43,17 @@ function ai_support_render_widget()
 
         <!-- Tab Content -->
         <div class="tab-content">
-
+            <!-- Messages Tab -->
             <div class="tab-pane fade show active" id="tab-messages">
                 <div>
                     <div id="ai-chat-sidebar">
                     </div>
                     <div id="ai-chat-messages"></div>
+                </div>
+                <div id="ai-ask-btn">
+                    <button class="ask-ai-btn">
+                        Send Us Message
+                    </button>
                 </div>
             </div>
 

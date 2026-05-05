@@ -307,15 +307,22 @@ jQuery(document).ready(function ($) {
         });
 
     });
+    let back = false;
+
+
     jQuery('#ai-chat-messages').hide();
     jQuery('.back-btn-arrow').hide();
     jQuery(document).on('click', '#ai-toogle-btn', async function (e) {
-        await jQuery('#ai-chat-sidebar').toggle();
+        // await jQuery('#ai-chat-sidebar').toggle();
+        if (back) {
+            jQuery('#ai-chat-sidebar').show();
+        }
         jQuery('#ai-chat-messages').hide();
         jQuery('.back-btn-arrow').hide();
     });
 
     jQuery(document).on('click', '.support-session-item', async function (e) {
+        back = true;
         await jQuery('#ai-chat-sidebar').toggle();
         jQuery('#ai-chat-messages').show();
         jQuery('.back-btn-arrow').toggle();
@@ -332,7 +339,3 @@ jQuery(document).ready(function ($) {
 
 
 });
-
-
-
-

@@ -27,7 +27,7 @@ jQuery(document).ready(function ($) {
         console.log(question);
 
         $messages.append(
-            '<div class="ai-user"><strong>You:</strong> ' + question + '</div>'
+            '<div class="ai-user ai-res"><strong>You:</strong> ' + question + '</div>'
         );
 
         $textarea.val('');
@@ -61,7 +61,7 @@ jQuery(document).ready(function ($) {
                     currentSessionId = data.data.session_id;
                     $('.ai-typing').remove();
                     $messages.append(
-                        '<div class="ai-bot"><strong>AI:</strong> ' +
+                        '<div class="ai-bot ai-res"><strong>AI:</strong> ' +
                         formatAIResponse(data.data.response) +
                         '</div>'
                     );
@@ -143,7 +143,6 @@ jQuery(document).ready(function ($) {
     $('#ai-input-area').hide();
 
     $('.ai-option').on('click', function () {
-
 
         $selectedSupport = $(this).data('type');
         let defaultQuestion = $(this).data('message');
@@ -308,6 +307,7 @@ jQuery(document).ready(function ($) {
         });
 
     });
+    jQuery('#ai-chat-messages').hide();
     jQuery('.back-btn-arrow').hide();
     jQuery(document).on('click', '#ai-toogle-btn', async function (e) {
         await jQuery('#ai-chat-sidebar').toggle();
@@ -321,9 +321,14 @@ jQuery(document).ready(function ($) {
         jQuery('.back-btn-arrow').toggle();
     });
 
+    jQuery(document).on('click', '.ask-ai-btn', function (e) {
+        jQuery('#new_session_msg').click();
+        jQuery('#ai-support-options').show();
+        jQuery('.ai-user').hide();
+        jQuery('.ai-bot').hide();
+        jQuery('#ai-input-area').hide();
+
+    })
+
 
 });
-
-
-
-
