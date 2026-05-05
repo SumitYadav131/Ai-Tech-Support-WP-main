@@ -128,7 +128,7 @@ function ai_support_dashboard_page()
                             <td>
                                 <select name="ai_models" id="ai_models">
                                     <option selected value="openrouter/free">Openrouter</option>
-                                    <option  value="opennApi">OpenApi</option>
+                                    <option value="opennApi">OpenApi</option>
                                 </select>
                             </td>
                         </tr>

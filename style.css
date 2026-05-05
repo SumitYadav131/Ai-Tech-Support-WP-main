@@ -46,11 +46,18 @@ button.ai-option {
 div#ai-support-options {
   display: flex;
   flex-wrap: wrap;
+  gap: 10px;
+}
+
+button.ai-option {
+  border: 1px solid transparent !important;
+  /* box-shadow: 0 0 8px 2px rgb(0 0 255 / 51%); */
+  /* transition: all 0.3s ease-in-out; */
 }
 
 button.ai-option:hover {
   border: 1px solid blue !important;
-  box-shadow: 0 0 8px 2px rgb(0 0 255 / 51%);
+  /* box-shadow: 0 0 8px 2px rgb(0 0 255 / 51%); */
   transition: all 0.3s ease-in-out;
 }
 
@@ -279,7 +286,6 @@ div#ai-support-options .ai-option {
   font-weight: 400;
   text-align: left;
   border-radius: 80px;
-  margin-bottom: 12px;
   line-height: 24px;
   font-size: 15px;
   color: #000000;
