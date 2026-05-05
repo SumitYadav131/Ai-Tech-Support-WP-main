@@ -123,6 +123,8 @@ function ai_support_enqueue_assets()
 {
     wp_enqueue_style('ai-support-style', plugin_dir_url(__FILE__) . 'style.css');
     wp_enqueue_script('ai-support-script', plugin_dir_url(__FILE__) . 'script.js', ['jquery'], null, true);
+
+    
     wp_localize_script(
         'ai-support-script',
         'ai_support_obj',
