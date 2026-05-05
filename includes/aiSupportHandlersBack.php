@@ -139,7 +139,6 @@ function ai_support_handle_request()
         $session_id = ai_support_create_sessions($supportType);
     }
 
-
     ai_support_save_message($session_id, 'user', $question);
 
     ai_support_save_message($session_id, 'assistant', $response);

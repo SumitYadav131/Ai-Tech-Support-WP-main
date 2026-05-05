@@ -10,7 +10,6 @@ jQuery(document).ready(function ($) {
                 <td><button type="button" class="button remove-option">Remove</button></td>
             </tr>`
         );
-
     });
 
     $(document).on('click', '.remove-option', function () {
