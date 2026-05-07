@@ -94,16 +94,39 @@ function ai_support_render_widget()
 |--------------------------------------------------------------------------
 */
 
+// function ai_support_get_site_context()
+// {
+
+//     $theme = wp_get_theme()->get('Name');
+//     $wp_version = get_bloginfo('version');
+//     $plugins = get_option('active_plugins');
+
+//     return "Theme: $theme\n"
+//         . "WordPress Version: $wp_version\n"
+//         . "Active Plugins: " . implode(', ', $plugins);
+// }
+
+
+
 function ai_support_get_site_context()
 {
-
     $theme = wp_get_theme()->get('Name');
     $wp_version = get_bloginfo('version');
-    $plugins = get_option('active_plugins');
 
-    return "Theme: $theme\n"
-        . "WordPress Version: $wp_version\n"
-        . "Active Plugins: " . implode(', ', $plugins);
+    $plugins = get_option('active_plugins');
+    $plugin_data = [];
+
+    foreach ($plugins as $plugin) {
+        $plugin_data[] = $plugin;
+    }
+
+    return [
+        'theme' => $theme,
+        'wp_version' => $wp_version,
+        'plugins' => $plugin_data,
+        'php_version' => phpversion(),
+        'site_url' => get_site_url()
+    ];
 }
 
 /*
