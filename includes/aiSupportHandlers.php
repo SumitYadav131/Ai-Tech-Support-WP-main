@@ -151,7 +151,11 @@ function ai_support_handle_request()
         wp_send_json_error('Please enter a question.');
     }
     // $supportType
-    $response = ai_support_generate_response($question);
+    // $response = ai_support_generate_response($question);
+
+    $context = ai_support_get_site_context();
+
+    $response = ai_support_generate_response($question, $context);
 
     $supportType = sanitize_text_field($_POST['supportType']);
 
