@@ -253,7 +253,15 @@ jQuery(document).ready(function ($) {
 
                             '<div class="session-support-type">' + '(' + (session.support_type ? session.support_type : 'General') + ')' + '</div>' +
                             '</div>' +
-                            '</div>' + '</div>'
+                            '</div>' +
+                                 // Delete Button
+                            '<button class="delete-session" data-id="' + session.id + '">🗑</button>' 
+
+                             + '</div>' +
+
+                       
+
+                            '</div>'
                         );
 
                     });
@@ -336,6 +344,31 @@ jQuery(document).ready(function ($) {
         jQuery('#ai-input-area').hide();
 
     })
+
+    $(document).on('click', '.delete-session', function (e) {
+
+        e.stopPropagation(); 
+
+        let sessionId = $(this).data('id');
+
+        if (!confirm('Delete this chat?')) return;
+
+        $.ajax({
+            url: ai_support_obj.ajax_url,
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                action: 'delete_session',
+                session_id: sessionId
+            },
+            success: function (res) {
+                if (res.success) {
+                    $('[data-id="' + sessionId + '"]').remove();
+                }
+            }
+        });
+
+    });
 
 
 });

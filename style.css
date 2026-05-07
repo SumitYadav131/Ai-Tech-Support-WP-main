@@ -332,3 +332,49 @@ div#ai-ask-btn {
 div#ai-chat-messages {
   color: black;
 }
+
+.ai-msg-card {
+  background: #f1f5f9;
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ai-heading {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 10px 0 6px;
+  color: #1e293b;
+}
+
+.ai-list {
+  padding-left: 18px;
+  margin: 8px 0;
+}
+
+.ai-list li {
+  margin-bottom: 6px;
+}
+
+.ai-code {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+
+.ai-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 10px 0;
+}
+
+
+.delete-session{
+  border: none !important;
+}

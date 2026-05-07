@@ -100,44 +100,43 @@ jQuery(document).ready(function ($) {
         // Remove AI prefix
         text = text.replace(/^AI:\s*/i, '');
 
-        // Horizontal rules ---
-        text = text.replace(/^---$/gm, '<hr>');
+        // Horizontal rules
+        text = text.replace(/^---$/gm, '<hr class="ai-divider">');
 
-        // Headings ### Title
-        text = text.replace(/### (.*?)\n/g, '<h3>$1</h3>');
+        // Headings
+        text = text.replace(/### (.*?)\n/g, '<h4 class="ai-heading">$1</h4>');
 
-        // Bold **text**
+        // Bold
         text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-        // Code blocks ``` ```
-        text = text.replace(/```([\s\S]*?)```/g, '<pre>$1</pre>');
+        // Code blocks
+        text = text.replace(/```([\s\S]*?)```/g, '<pre class="ai-code">$1</pre>');
 
         // Numbered lists
         text = text.replace(/(?:^|\n)(\d+\..+(?:\n\d+\..+)*)/g, function (match) {
             let items = match.trim().split('\n');
-            let list = '<ol>';
-            $.each(items, function (_, item) {
+            let list = '<ol class="ai-list">';
+            items.forEach(item => {
                 list += '<li>' + item.replace(/^\d+\.\s*/, '') + '</li>';
             });
-            list += '</ol>';
-            return list;
+            return list + '</ol>';
         });
 
         // Bullet lists
         text = text.replace(/(?:^|\n)(- .+(?:\n- .+)*)/g, function (match) {
             let items = match.trim().split('\n');
-            let list = '<ul>';
-            $.each(items, function (_, item) {
+            let list = '<ul class="ai-list">';
+            items.forEach(item => {
                 list += '<li>' + item.replace('- ', '') + '</li>';
             });
-            list += '</ul>';
-            return list;
+            return list + '</ul>';
         });
 
         // Line breaks
         text = text.replace(/\n/g, '<br>');
 
-        return text;
+        // ✅ Wrap in UI card (MOST IMPORTANT CHANGE)
+        return `<div class="ai-msg-card">${text}</div>`;
     }
 
     $('#ai-input-area').hide();
