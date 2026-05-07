@@ -60,19 +60,36 @@ function create_session_store_table()
 
 function ai_support_generate_response($question)
 {
+    $context = ai_support_get_site_context();
 
-    $site_context = ai_support_get_site_context();
+    // Convert array → readable string
+    $context_string = "
+Site Info:
+- Site URL: {$context['site_url']}
+- WordPress Version: {$context['wp_version']}
+- PHP Version: {$context['php_version']}
+- Theme: {$context['theme']}
+- Plugins: " . implode(', ', $context['plugins']) . "
+";
 
-    $prompt = "You are a WordPress technical support expert.\n\n"
-        . "Site Info:\n" . $site_context
-        . "\n\nUser Question:\n" . $question;
+    // Strong system prompt (YOU WERE MISSING THIS)
+    $system_prompt = "
+You are a senior WordPress support engineer.
 
+Analyze the issue using site data.
+Always:
+- Identify root cause (plugin/theme/conflict)
+- Give step-by-step solution
+- Avoid generic answers
+";
 
-    // include_once plugin_dir_path(__FILE__) . 'config.php';
+    //  Better user prompt
+    $prompt = $context_string . "\nUser Issue:\n" . $question;
+
     $api_key = get_option('ai_support_api_key');
     $ai_model = get_option('ai_model');
+
     $body = [
-        // "model" => "mistralai/mistral-7b-instruct",
         "model" => $ai_model,
         "messages" => [
             [
@@ -86,11 +103,14 @@ function ai_support_generate_response($question)
         ]
     ];
 
+    // DEBUG (very important for you right now)
+    error_log($prompt);
+
     $response = wp_remote_post('https://openrouter.ai/api/v1/chat/completions', [
         'headers' => [
             'Authorization' => 'Bearer ' . $api_key,
             'Content-Type' => 'application/json',
-            'HTTP-Referer' => get_site_url(), // required by OpenRouter
+            'HTTP-Referer' => get_site_url(),
             'X-Title' => get_bloginfo('name'),
         ],
         'body' => json_encode($body),
@@ -104,13 +124,13 @@ function ai_support_generate_response($question)
     $result = json_decode(wp_remote_retrieve_body($response), true);
 
     if (isset($result['error'])) {
-
         error_log('OpenRouter Error: ' . print_r($result, true));
         return 'API Error: ' . $result['error']['message'];
     }
 
     return $result['choices'][0]['message']['content'] ?? 'No response.';
 }
+
 
 /*
 |--------------------------------------------------------------------------
@@ -124,7 +144,7 @@ function ai_support_enqueue_assets()
     wp_enqueue_style('ai-support-style', plugin_dir_url(__FILE__) . 'style.css');
     wp_enqueue_script('ai-support-script', plugin_dir_url(__FILE__) . 'script.js', ['jquery'], null, true);
 
-    
+
     wp_localize_script(
         'ai-support-script',
         'ai_support_obj',
